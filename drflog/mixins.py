@@ -9,7 +9,7 @@ class LogMixin(object):
 
     def parse_client_ip(self, request):
         ip = request.META.get('HTTP_X_FORWARDED_FOR', None)
-        return trim(ip.split(',')[0]) if ip else request.META.get('REMOTE_ADDR', '')
+        return ip.split(',')[0].strip() if ip else request.META.get('REMOTE_ADDR', '')
 
     def parse_user_agent(self, request):
         return request.META.get('HTTP_USER_AGENT', None)
