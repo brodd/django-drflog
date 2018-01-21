@@ -24,7 +24,7 @@ class LogMixin(object):
                     data[key] = self.clean_data(value)
                 if self.FILTERED_FIELDS.search(key):
                     data[key] = self.FILTERED_PLACEHOLDER
-        return data
+            return data
 
 
     def initial(self, request, *args, **kwargs):
@@ -37,7 +37,7 @@ class LogMixin(object):
             method=request.method,
             user_agent=request.META.get('HTTP_USER_AGENT', 'N/A'),
             query_params=self.clean_data(request.query_params.dict()),
-            request_data=self.clean_data(request.data.dict())
+            request_data=self.clean_data(request.data)
         )
         super(LogMixin, self).initial(request, *args, **kwargs)
 
