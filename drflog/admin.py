@@ -1,11 +1,11 @@
-from django.contrib import admin
-from drflog.models import Entry
-from django.utils.safestring import mark_safe
-from django.template.defaultfilters import truncatechars
 import json
 from pygments import highlight
 from pygments.lexers import JsonLexer
 from pygments.formatters import HtmlFormatter
+from django.contrib import admin
+from django.utils.safestring import mark_safe
+from django.template.defaultfilters import truncatechars
+from drflog.models import Entry
 
 STYLE = 'friendly'
 HTML_FORMATTER = HtmlFormatter(style=STYLE)
