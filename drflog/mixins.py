@@ -43,8 +43,9 @@ class LogMixin(object):
 
     def finalize_response(self, request, response, *args, **kwargs):
         response = super(LogMixin, self).finalize_response(request, response, *args, **kwargs)
-        self.request.drflog.response_data = self.clean_data(response.data)
-        self.request.drflog.status = response.status_code
-        self.request.drflog.time_finalized = now()
-        self.request.drflog.save()
+        if hasattr(self.request, 'drflog'):
+            self.request.drflog.response_data = self.clean_data(response.data)
+            self.request.drflog.status = response.status_code
+            self.request.drflog.time_finalized = now()
+            self.request.drflog.save()
         return response
