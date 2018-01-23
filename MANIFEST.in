@@ -1,1 +1,2 @@
 recursive-include drflog/static *
+recursive-include drflog/templates *
