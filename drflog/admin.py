@@ -35,7 +35,7 @@ class UserFilter(InputFilter):
     def queryset(self, request, queryset):
         if self.value() is not None:
             if self.value().isdigit():
-                return queryset.filter(pk=int(self.value()))
+                return queryset.filter(user_id=int(self.value()))
             else:
                 return queryset.filter(user__email__iexact=self.value())
 
