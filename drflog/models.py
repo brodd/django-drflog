@@ -11,7 +11,8 @@ class Entry(models.Model):
         return int((self.time_finalized - self.time_initialized).total_seconds() * 1000)
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             null=True)
+                             null=True,
+                             on_delete=models.CASCADE)
 
     ip = models.GenericIPAddressField(db_index=True)
 
