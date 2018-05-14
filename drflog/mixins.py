@@ -30,7 +30,7 @@ class LogMixin(object):
     def initial(self, request, *args, **kwargs):
 
         self.request.drflog = Entry.objects.create(
-            user=request.user if not request.user.is_anonymous() else None,
+            user=request.user if not request.user.is_anonymous else None,
             ip=self.parse_client_ip(request),
             host=request.get_host(),
             path=request.path,
