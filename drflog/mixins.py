@@ -35,7 +35,7 @@ class LogMixin(object):
             host=request.get_host(),
             path=request.path,
             method=request.method,
-            user_agent=request.META.get('HTTP_USER_AGENT', 'N/A'),
+            user_agent=request.META.get('HTTP_USER_AGENT', 'N/A')[:200],
             query_params=self.clean_data(request.query_params.dict()),
             request_data=self.clean_data(request.data)
         )
